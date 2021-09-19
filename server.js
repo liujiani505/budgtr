@@ -1,5 +1,4 @@
 const express = require("express");
-const { ppid } = require("process");
 const app = express();
 const port = 3000;
 const budgets = require("./models/budget")
@@ -16,24 +15,24 @@ app.use(express.urlencoded({extended: false}))
 
 // INDEX ROUTE
 app.get("/budgets", (req, res)=>{
-    res.render("index.ejs", {allBudgets: budgets})
+    res.render("index.ejs", {allBudgets: budgets, title: "Index Page"})
 })
 
 // NEW ROUTE
 app.get("/budgets/new", (req, res)=>{
-    res.render("new.ejs")
+    res.render("new.ejs", {title: "New Page"})
 })
 
 // CREATE ROUTE
 app.post("/budgets", (req, res)=>{
-
+    budgets.push(req.body)
+    res.redirect("/budgets")
 })
 
 // SHOW ROUTE
 app.get("/budgets/:index", (req, res)=>{
-    res.render("show.ejs", {budget: budgets[req.params.index]})
+    res.render("show.ejs", {budget: budgets[req.params.index], title: "Show Page"})
 })
-
 
 
 app.listen(port);
