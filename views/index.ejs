@@ -11,6 +11,9 @@
 <body>
     <div class="container">
         <h1>Budgtr</h1>
+        <form action="/budgets/new">
+            <input type="submit" value="NEW ITEM"/>
+        </form>
         <table>
             <% for(let i = 0; i < allBudgets.length; i++){ %>
                 <tr>

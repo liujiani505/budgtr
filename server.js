@@ -8,7 +8,7 @@ const budgets = require("./models/budget")
 // Middleware
 ///////////////////////////
 app.use(express.static("public"))
-
+app.use(express.urlencoded({extended: false}))
 
 ///////////////////////////
 // Routes
@@ -21,7 +21,7 @@ app.get("/budgets", (req, res)=>{
 
 // NEW ROUTE
 app.get("/budgets/new", (req, res)=>{
-
+    res.render("new.ejs")
 })
 
 // CREATE ROUTE
