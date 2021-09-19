@@ -31,7 +31,7 @@ app.post("/budgets", (req, res)=>{
 
 // SHOW ROUTE
 app.get("/budgets/:index", (req, res)=>{
-
+    res.render("show.ejs", {budget: budgets[req.params.index]})
 })
 
 
