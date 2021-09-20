@@ -3,11 +3,22 @@
     <%- include("./partials/head.ejs") %>
 <body>
     <div class="container">
-        <h1>Budgtr</h1>
-        <form action="/budgets/new">
-            <input type="submit" value="NEW ITEM"/>
-        </form>
-        <table>
+        <div class="row" style="background-color:rgb(201, 236, 248)">
+            <div class="seven columns" style="margin-top: 15px">
+                <h1 style="margin-left:15px">Budgtr</h1>
+            </div>
+            <div class="five columns" style="margin-top: 25px">
+                <h5>Account Balance:</h5>
+            </div>
+        </div>
+        <table class="u-full-width" style="margin-top:30px">
+            <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>NAME</th>
+                    <th>AMOUNT</th>
+                </tr>
+            </thead>
             <% for(let i = 0; i < allBudgets.length; i++){ %>
                 <tr>
                     <td>
@@ -24,6 +35,9 @@
                 </tr>
             <% } %>
         </table>
+        <form action="/budgets/new">
+            <input class="button-primary" type="submit" value="NEW ITEM"/>
+        </form>
     </div>
 </body>
 </html>
