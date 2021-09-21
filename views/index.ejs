@@ -3,12 +3,24 @@
     <%- include("./partials/head.ejs") %>
 <body>
     <div class="container">
-        <div class="row" style="background-color:rgb(201, 236, 248)">
+        <div class="row">
             <div class="seven columns" style="margin-top: 15px">
-                <h1 style="margin-left:15px">Budgtr</h1>
+                <h1>Budgtr</h1>
             </div>
             <div class="five columns" style="margin-top: 25px">
-                <h5>Account Balance:</h5>
+                <h5>Account Balance:
+                <% let bankAccount=0; %>
+                <% for(eachAmount of allBudgets){
+                    bankAccount += parseInt(eachAmount.amount)
+                } %>
+                <span 
+                <% if(bankAccount>1000){ %>
+                    id="green-text"
+                <% } else if (bankAccount<=0){ %>
+                    id="red-text"
+                <% } %>
+                >$<%= bankAccount %></span>
+                </h5>
             </div>
         </div>
         <table class="u-full-width" style="margin-top:30px">
