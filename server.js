@@ -25,8 +25,13 @@ app.get("/budgets/new", (req, res)=>{
 
 // CREATE ROUTE
 app.post("/budgets", (req, res)=>{
+    
+    req.body.tags = req.body.tags.split(',');
+    req.body.tags = req.body.tags.map(x => x.trim());
     budgets.push(req.body)
+    console.log(req.body)
     res.redirect("/budgets")
+
 })
 
 // SHOW ROUTE
